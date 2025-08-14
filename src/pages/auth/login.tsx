@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export default function Login() {
     const router = useRouter();
-    const [email, setEmail] = useState("");
+    const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
@@ -55,7 +55,7 @@ export default function Login() {
             const res = await fetch(LOGIN_API, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ identifier, password }),
             });
 
             if (!res.ok) {
@@ -104,8 +104,8 @@ export default function Login() {
                             <input
                                 type="text"
                                 name="email or username"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={identifier}
+                                onChange={(e) => setIdentifier(e.target.value)}
                                 className="w-full px-3 py-2 rounded-lg border border-primary-300 dark:border-primary-600 
                          bg-primary-50 dark:bg-primary-800 text-primary-900 dark:text-primary-100 focus:outline-none 
                          focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 transition-colors"
